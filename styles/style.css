@@ -1,0 +1,77 @@
+
+body {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+}
+
+/* board */
+#game-board {
+    display: flex;
+    flex-flow: row wrap;
+    width: 400px;
+    height: 400px;
+    margin: 40px 0;
+}
+
+#defaultCanvas0 {
+  position: absolute;
+}
+
+/* .btn-board {
+
+} */
+
+#green-btn {
+    border-top-left-radius: 200px;
+    background-color: green;
+    width: 200px;
+    height: 200px;
+    border: black solid 5px;
+    box-sizing: border-box;
+}
+
+
+#red-btn {
+    border-top-right-radius: 200px;
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    border: black solid 5px;
+    box-sizing: border-box;
+}
+
+
+#blue-btn {
+    border-bottom-left-radius: 200px;
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+    border: black solid 5px;
+    box-sizing: border-box;
+}
+
+#yellow-btn {
+    border-bottom-right-radius: 200px;
+    background-color: yellow;
+    width: 200px;
+    height: 200px;
+    border: black solid 5px;
+    box-sizing: border-box;
+}
+
+/* Section start game */
+
+#start-game {
+    height: 100px;
+    padding: 30px 30px;
+    margin: 0 auto;
+}
+
+/* Button start game */
