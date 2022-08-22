@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href='https://fonts.googleapis.com/css?family=Original+Surfer&effect=emboss' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/style.css" />
     <title>Simon</title>
   </head>
@@ -15,10 +16,14 @@
             <p id="to-do"></p>
         </div>
         <div id="game-board">
-            <div id="green-btn" class="btn-board"></div>
-            <div id="red-btn" class="btn-board"></div>
-            <div id="blue-btn" class="btn-board"></div>
-            <div id="yellow-btn" class="btn-board"></div>
+            <div>
+              <div id="green-btn" class="btn-board"></div>
+              <div id="red-btn" class="btn-board"></div>
+            </div>
+            <div>
+              <div id="blue-btn" class="btn-board"></div>
+              <div id="yellow-btn" class="btn-board"></div>
+            </div>
         </div>
         <div id="start-game">
             <button type="button" class="btn-start">Let`s go!</button>
@@ -27,6 +32,13 @@
             <h3 id ="count-points"></h3>
         </div>
     </main>
+    <div id="popup" class="hidden">
+      <h2>This is gonna be a popup</h2>
+      <h3 id ="count-points"></h3>
+      <p id="points-counted"></p>
+      <p>Wanna try again?</p>
+      <button type="button" class="btn-start">Let`s go!</button>
+    </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script> -->
     <script type="text/javascript" src="js/index.js"></script>
   </body>
