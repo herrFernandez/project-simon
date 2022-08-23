@@ -32,14 +32,16 @@
             <h3 id ="count-points"></h3>
         </div>
     </main>
-    <div id="popup" class="hidden">
-      <h2>This is gonna be a popup</h2>
-      <h3 id ="count-points"></h3>
+    <div class="popup">
+      <div id="btn-right">
+        <button id="close-button">&times;</button>
+      </div>
+      <h2>Simon says</h2>
       <p id="points-counted"></p>
       <p>Wanna try again?</p>
-      <button type="button" class="btn-start">Let`s go!</button>
+      <button type="button" class="btn-start" id="popup-btn">Let`s go!</button>
     </div>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script> -->
+    <div id="overlay"></div>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>

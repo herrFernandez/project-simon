@@ -64,9 +64,6 @@ function blinkingEffect(simonChoice) {
 }
 
 function endGame() {
-  const popup = document.getElementById("popup");
-  // popup.classList.add("open-popup"); // add a class that opnes the popup
-
   const endGameMessage = document.querySelector("#points-counted");
   if (points < 3) {
     endGameMessage.innerHTML = `Dude, you did ${points} rounds. Get a deep breath and concentrate. You got it!`;
@@ -82,6 +79,37 @@ function endGame() {
     endGameMessage.innerHTML = `Wow ${points} rounds! Simon says you are the winner!`;
   }
   console.log("hola");
+}
 
-  // startButton.classList.remove("open-popup"); // remove the class to close the popup
+// POPUP functions and events: add a class that opnes the popup + remove the class to close the popup
+// startButton.classList.remove("open-popup");??
+// How to connect the end game with the open popup function??
+
+const closePopupButton = document.querySelector("#close-button");
+const overlay = document.getElementById("overlay");
+
+overlay.addEventListener("click", () => {
+  const popups = document.querySelectorAll(".popup.active");
+  popups.forEach((popup) => {
+    closeModal(popup);
+  });
+});
+
+closePopupButton.forEach((popup) => {
+  popup.addEventListener("click", () => {
+    const popup = button.closest(".popup");
+    closePopup(popup);
+  });
+});
+
+function openPopup(popup) {
+  if (popup == null) return;
+  popup.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closePopup(popup) {
+  if (popup == null) return;
+  popup.classList.remove("active");
+  overlay.classList.remove("active");
 }
