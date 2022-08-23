@@ -42,7 +42,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
 
@@ -99,16 +99,11 @@ p {
   background-color: #00b894;
 }
 
-#green-btn:hover {
+#green-btn:hover,
+#green-btn.glow {
   box-shadow: inset 0px 0px 0px 2px white;
   box-sizing: border-box;
   background-color: #55efc4;
-}
-
-#green-btn.glow {
-  background-color: #55efc4;
-  box-shadow: inset 0px 0px 0px 3px white;
-  box-sizing: border-box;
 }
 
 #red-btn {
@@ -116,16 +111,11 @@ p {
   background-color: #f0003c;
 }
 
-#red-btn:hover {
+#red-btn:hover,
+#red-btn.glow {
   box-shadow: inset 0px 0px 0px 2px white;
   box-sizing: border-box;
   background-color: #ff537e;
-}
-
-#red-btn.glow {
-  background-color: #ff537e;
-  box-shadow: inset 0px 0px 0px 3px white;
-  box-sizing: border-box;
 }
 
 #blue-btn {
@@ -133,12 +123,7 @@ p {
   background-color: #0984e3;
 }
 
-#blue-btn:hover {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #61aefc;
-}
-
+#blue-btn:hover,
 #blue-btn.glow {
   box-shadow: inset 0px 0px 0px 2px white;
   box-sizing: border-box;
@@ -150,16 +135,11 @@ p {
   background-color: #fded56;
 }
 
-#yellow-btn:hover {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #ffe48c;
-}
-
+#yellow-btn:hover,
 #yellow-btn.glow {
   box-shadow: inset 0px 0px 0px 2px white;
   box-sizing: border-box;
-  background-color: #ffe48c;
+  background-color: #fff2c8;
 }
 
 /* Section start game */
@@ -210,5 +190,4 @@ button:hover {
   padding: 2px 10px;
   box-shadow: none;
   cursor: pointer;
-
 }
