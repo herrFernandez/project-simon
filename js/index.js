@@ -5,20 +5,31 @@ const yellowBtn = document.getElementById("yellow-btn");
 const simonGame = [greenBtn, redBtn, blueBtn, yellowBtn];
 let simonChoices = [];
 let playerChoices = [];
-const startButton = document.querySelector(".btn-start");
-const pointCounter = document.querySelector("#count-points");
+const startButton = document.querySelector("#start-game-btn");
+const pointCounter = document.querySelector(".count-points");
 let points = 0;
 let round = 1;
+const endGameMessage = document.querySelector(".end-game-message");
+const openPopup = document.querySelector(".popup");
+const hideScores = document.querySelector("#scores");
+const closePopupBtn = document.querySelector(".close-button-popup");
+const restartGameWithBtn = document.querySelector("#popup-start-btn");
 
 // click event that triggers startGame and sets the counter to 0
 startButton.addEventListener("click", () => {
+  resetGame();
   startGame();
 });
 
-function startGame() {
-  // Reset Simon Choices (in case the user restartes the game)
+function resetGame() {
+  // Reset Simon & Player Choices (in case the user restarts the game)
   simonChoices = [];
+  playerChoices = [];
+  points = 0;
+  round = 1;
+}
 
+function startGame() {
   // Creates random choices (just refactored in a separate function to have a better overview)
   createSimonsRandomChoices();
 
@@ -79,19 +90,19 @@ function nextRound() {
   const toDo = document.getElementById("to-do");
   toDo.innerHTML = "Watch and memorize the sequence first!"; // Player gets the instruction
 
-  // Wait 1 seconds before beginning the user to show the pattern
-  setTimeout(() => {
-    // Loops over the simon choices from 0 to the number of rounds
-    simonChoices.slice(0, round).forEach((simonChoicesRound, idx) => {
-      // Makes a 1 second break between multiple simon choices pattern for the user to see the visual blink
-      setTimeout(() => blinkingEffect(simonChoicesRound), (idx + 1) * 1000);
-    });
+  // Loops over the simon choices from 0 to the number of rounds
+  simonChoices.slice(0, round).forEach((simonChoicesRound, idx) => {
+    // Makes a 1 second break between multiple simon choices pattern for the user to see the visual blink
+    setTimeout(() => blinkingEffect(simonChoicesRound), (idx + 1) * 1000);
+  });
 
+  // Time for the user. Wait 3 seconds or until the user does the clicks to let simon play again
+  setTimeout(() => {
     // Reset player choices
     playerChoices = [];
-
+    setupPlayerEvents();
     toDo.innerHTML = "Now its your turn. Play!"; // Player gets the instruction
-  }, 1000);
+  }, 3000);
 }
 
 function blinkingEffect(simonChoiceId) {
@@ -106,52 +117,54 @@ function blinkingEffect(simonChoiceId) {
 }
 
 function endGame() {
-  const endGameMessage = document.querySelector("#points-counted");
+  if (openPopup == null) return;
+  openPopup.classList.add("active");
+  overlay.classList.add("active");
+  hideScores.classList.toggle("hidden");
 
   if (points < 3) {
-    pointCounter.innerHTML = `Dude, you did ${points} rounds. Get a deep breath and concentrate. You got it!`;
+    endGameMessage.innerHTML = `Dude, you did ${points} rounds. Get a deep breath and concentrate. You got it!`;
   } else if (3 <= points < 5) {
-    pointCounter.innerHTML = ` ${points} rounds. You still have a big way to win the game. Keep trying!`;
+    endGameMessage.innerHTML = ` ${points} rounds. You still have a big way to win the game. Keep trying!`;
   } else if (5 <= points < 10) {
-    pointCounter.innerHTML = `Now we are talking >>  ${points} rounds. You are getting in the flow!`;
+    endGameMessage.innerHTML = `Now we are talking >>  ${points} rounds. You are getting in the flow!`;
   } else if (10 <= points < 15) {
-    pointCounter.innerHTML = `Half the way done! >>  ${points} rounds. Just put some more focus and it's yours!`;
+    endGameMessage.innerHTML = `Half the way done! >>  ${points} rounds. Just put some more focus and it's yours!`;
   } else if (15 <= points < 19) {
-    pointCounter.innerHTML = `Uuuuh ${points} rounds! You are closer than ever. Let's go for the last round!`;
+    endGameMessage.innerHTML = `Uuuuh ${points} rounds! You are closer than ever. Let's go for the last round!`;
   } else {
-    pointCounter.innerHTML = `Wow ${points} rounds! Simon says you are the winner!`;
+    endGameMessage.innerHTML = `Wow ${points} rounds! Simon says you are the winner!`;
   }
 }
 
 // POPUP functions and events: add a class that opnes the popup + remove the class to close the popup
-// startButton.classList.remove("open-popup");??
-// How to connect the end game with the open popup function??
-
-const closePopupButton = document.querySelector("#close-button");
-const overlay = document.getElementById("overlay");
-
-overlay.addEventListener("click", () => {
-  const popups = document.querySelectorAll(".popup.active");
-  popups.forEach((popup) => {
-    closeModal(popup);
-  });
+closePopupBtn.addEventListener("click", () => {
+  closePopup();
+  console.log("hola");
 });
 
-closePopupButton.forEach((popup) => {
-  popup.addEventListener("click", () => {
-    const popup = button.closest(".popup");
-    closePopup(popup);
-  });
-});
-
-function openPopup(popup) {
-  if (popup == null) return;
-  popup.classList.add("active");
-  overlay.classList.add("active");
+function closePopup() {
+  // if (openPopup == null) return;
+  openPopup.classList.remove("active");
+  overlay.classList.remove("active");
+  hideScores.classList.remove("hidden");
+  resetGame();
 }
 
-function closePopup(popup) {
-  if (popup == null) return;
-  popup.classList.remove("active");
+restartGameWithBtn.addEventListener("click", () => {
+  closePopupStartGame();
+  console.log("hola");
+});
+
+
+function closePopupStartGame() {
+  // if (openPopup == null) return;
+  openPopup.classList.remove("active");
   overlay.classList.remove("active");
+  hideScores.classList.remove("hidden");
+  resetGame();
+  setTimeout(() => {
+    startGame();
+  }, 500);
+
 }
