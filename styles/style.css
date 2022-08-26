@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Original+Surfer&effect=emboss");
+
+html,
 body {
   color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   margin: 0;
   font-size: 16px;
   height: 100vh;
@@ -13,6 +17,192 @@ main {
   padding-top: 30px;
 }
 
+h1 {
+  font-family: "Original Surfer";
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-family: "Original Surfer";
+  font-size: 2.3rem;
+}
+
+h3,
+h4,
+h5 {
+  font-family: "Original Surfer";
+  font-size: 1.9rem;
+}
+
+p {
+  font-family: "arial";
+  font-size: 1.4rem;
+}
+
+/* board */
+
+#game-message {
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+#to-do {
+  margin: 0;
+}
+#game-board {
+  margin: 40px 0;
+  display: block;
+  position: relative;
+  perspective: 1000px; 
+  perspective-origin: 50% 50px;
+}
+
+#outer-circle {
+  transform: rotateX(50deg);
+}
+
+#inner-circle {
+  position: absolute;
+  background: rgb(192, 183, 183);
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  border: solid black 5px;
+  top: 122px;
+  left: 0;
+  right: 0;
+  display: table-cell;
+  vertical-align: middle;
+  /* margin: -80px 0px 0px -200px; */
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotateX(50deg);
+}
+
+#title {
+  text-align: center;
+  font-family: "Original Surfer";
+  font-size: 1.4rem;
+  color: #000000;
+  padding-top: 60px;
+  font-weight: bold;
+}
+
+.count-points {
+  text-align: center;
+}
+
+.btn-board {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.btn-board:hover {
+  box-shadow: inset 0px 0px 0px 2px white;
+  box-sizing: border-box;
+  background-color: #55efc4;
+}
+
+#green-btn {
+  border-top-left-radius: 200px;
+  background-color: #00b894;
+}
+
+#green-btn:hover,
+#green-btn.glow {
+  -moz-box-shadow: 0px 0px 15px white;
+  -webkit-box-shadow: 0px 0px 15px white;
+  box-shadow: inset 0px 0px 15px white;
+  box-sizing: border-box;
+  background-color: #55efc4;
+}
+
+#red-btn {
+  border-top-right-radius: 200px;
+  background-color: #f0003c;
+}
+
+#red-btn:hover,
+#red-btn.glow {
+  -moz-box-shadow: 0px 0px 15px white;
+  -webkit-box-shadow: 0px 0px 15px white;
+  box-shadow: inset 0px 0px 15px white;
+  box-sizing: border-box;
+  background-color: #ff537e;
+}
+
+#blue-btn {
+  border-bottom-left-radius: 200px;
+  background-color: #0984e3;
+}
+
+#blue-btn:hover,
+#blue-btn.glow {
+  -moz-box-shadow: 0px 0px 15px white;
+  -webkit-box-shadow: 0px 0px 15px white;
+  box-shadow: inset 0px 0px 15px white;
+  box-sizing: border-box;
+  background-color: #61aefc;
+}
+
+#yellow-btn {
+  border-bottom-right-radius: 200px;
+  background-color: #fae630;
+}
+
+#yellow-btn:hover,
+#yellow-btn.glow {
+  -moz-box-shadow: 0px 0px 15px white;
+  -webkit-box-shadow: 0px 0px 15px white;
+  box-shadow: inset 0px 0px 15px white;
+  box-sizing: border-box;
+  background-color: #ffee56;
+}
+
+/* Section start game */
+
+#start-game {
+  height: 20px;
+  padding: 30px 30px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Button start game */
+
+button {
+  background-color: #f0003c;
+  color: white;
+  position: relative;
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Original Surfer";
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+  background-color: #55efc4;
+  color: rgb(70, 85, 138);
+}
+
+#btn-right {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* Popup */
 .popup {
   position: fixed;
   top: 50%;
@@ -54,134 +244,6 @@ main {
   display: none;
 }
 
-h1 {
-  font-family: "Original Surfer";
-  font-size: 48px;
-}
-
-h2,
-h3,
-h4,
-h5 {
-  font-family: "Original Surfer";
-  font-size: 1.9rem;
-}
-
-p {
-  font-family: "arial";
-  font-size: 1.5rem;
-}
-
-/* board */
-
-#game-message {
-  padding: 5px 5px;
-}
-#to-do {
-  margin: 0;
-}
-#game-board {
-  margin: 40px 0;
-}
-
-.btn-board {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-}
-
-.btn-board:hover {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #55efc4;
-}
-
-#green-btn {
-  border-top-left-radius: 200px;
-  background-color: #00b894;
-}
-
-#green-btn:hover,
-#green-btn.glow {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #55efc4;
-}
-
-#red-btn {
-  border-top-right-radius: 200px;
-  background-color: #f0003c;
-}
-
-#red-btn:hover,
-#red-btn.glow {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #ff537e;
-}
-
-#blue-btn {
-  border-bottom-left-radius: 200px;
-  background-color: #0984e3;
-}
-
-#blue-btn:hover,
-#blue-btn.glow {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #61aefc;
-}
-
-#yellow-btn {
-  border-bottom-right-radius: 200px;
-  background-color: #fded56;
-}
-
-#yellow-btn:hover,
-#yellow-btn.glow {
-  box-shadow: inset 0px 0px 0px 2px white;
-  box-sizing: border-box;
-  background-color: #fff2c8;
-}
-
-/* Section start game */
-
-#start-game {
-  height: 20px;
-  padding: 30px 30px;
-  margin: 0 auto;
-}
-
-/* Button start game */
-
-button {
-  background-color: #f0003c;
-  color: white;
-  position: relative;
-  padding: 10px 25px;
-  border-radius: 5px;
-  border: none;
-  display: inline-block;
-  cursor: pointer;
-  vertical-align: middle;
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: "Original Surfer";
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-button:hover {
-  background-color: #55efc4;
-  color: rgb(70, 85, 138);
-}
-
-#btn-right {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
 #popup-start-btn {
   width: 70%;
 }
@@ -193,4 +255,85 @@ button:hover {
   padding: 2px 10px;
   box-shadow: none;
   cursor: pointer;
+}
+
+.end-game-message {
+  font-family: "Original Surfer";
+  font-size: 1.6rem;
+}
+
+/* Mobile */
+
+@media (max-width: 320px) {
+  #inner-circle {
+    height: 90px;
+    width: 90px;
+    top: 23.5%;
+  }
+
+  .btn-board {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 357px) {
+  #inner-circle {
+    height: 90px;
+    width: 90px;
+    top: 23.5%;
+    right: 0%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 497px) {
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  #outer-circle {
+    padding: 0 30px;
+    width: 100%;
+  }
+
+  .btn-board {
+    width: 150px;
+    height: 150px;
+  }
+
+  #inner-circle {
+    height: 90px;
+    width: 90px;
+    top: 23.5%;
+  }
+
+  #title {
+    text-align: center;
+    font-family: "Original Surfer";
+    font-size: 1.1rem;
+    color: #000000;
+    padding-top: 33px;
+    font-weight: bold;
+  }
+
+  .count-points {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 497px) and (max-width: 615px) {
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 614px) and (max-width: 1200px) {
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+  }
 }

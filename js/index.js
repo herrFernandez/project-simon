@@ -11,6 +11,7 @@ let points = 0;
 let round = 1;
 const endGameMessage = document.querySelector(".end-game-message");
 const openPopup = document.querySelector(".popup");
+const overlayPopup = document.querySelector("#overlay");
 const hideScores = document.querySelector("#scores");
 const closePopupBtn = document.querySelector(".close-button-popup");
 const restartGameWithBtn = document.querySelector("#popup-start-btn");
@@ -40,7 +41,7 @@ function startGame() {
   nextRound();
 
   // Show score counter
-  pointCounter.innerHTML = `Your score is: ${points} points`;
+  pointCounter.innerHTML = `${points} rounds completed`;
 }
 
 function createSimonsRandomChoices() {
@@ -61,7 +62,7 @@ function setupPlayerEvents() {
 
 function handlePlayerButtonClick(e) {
   const clickedChoice = e.target.getAttribute("id");
-
+  playSound(clickedChoice);
   playerChoices.push(clickedChoice);
 
   if (playerChoices.length !== round) {
@@ -77,7 +78,7 @@ function handlePlayerButtonClick(e) {
 
     // Raise points and show updated
     points++;
-    pointCounter.innerHTML = `Your score is: ${points} points`;
+    pointCounter.innerHTML = `${points} rounds completed`;
 
     // Start next round
     nextRound();
@@ -91,9 +92,9 @@ function nextRound() {
   toDo.innerHTML = "Watch and memorize the sequence first!"; // Player gets the instruction
 
   // Loops over the simon choices from 0 to the number of rounds
-  simonChoices.slice(0, round).forEach((simonChoicesRound, idx) => {
+  simonChoices.slice(0, round).forEach((simonChoiceId, idx) => {
     // Makes a 1 second break between multiple simon choices pattern for the user to see the visual blink
-    setTimeout(() => blinkingEffect(simonChoicesRound), (idx + 1) * 1000);
+    setTimeout(() => blinkingEffect(simonChoiceId), (idx + 1) * 1000);
   });
 
   // Time for the user. Wait 3 seconds or until the user does the clicks to let simon play again
@@ -110,10 +111,15 @@ function blinkingEffect(simonChoiceId) {
 
   // let glow the random choices by toggleing the class 0'5 seconds
   simonChoice.classList.toggle("glow");
-
+  playSound(simonChoiceId);
   setTimeout(() => {
     simonChoice.classList.toggle("glow");
   }, 500);
+}
+
+function playSound(simonChoiceId) {
+  const choiceAudio = document.getElementById("audio-" + simonChoiceId);
+  choiceAudio.play();
 }
 
 function endGame() {
@@ -123,17 +129,17 @@ function endGame() {
   hideScores.classList.toggle("hidden");
 
   if (points < 3) {
-    endGameMessage.innerHTML = `Dude, you did ${points} rounds. Get a deep breath and concentrate. You got it!`;
+    endGameMessage.innerHTML = `"Dude, you did ${points} rounds. Get a deep breath and concentrate. You got it!"`;
   } else if (3 <= points < 5) {
-    endGameMessage.innerHTML = ` ${points} rounds. You still have a big way to win the game. Keep trying!`;
+    endGameMessage.innerHTML = ` "${points} rounds. You still have a big way to win the game. Keep trying!"`;
   } else if (5 <= points < 10) {
-    endGameMessage.innerHTML = `Now we are talking >>  ${points} rounds. You are getting in the flow!`;
+    endGameMessage.innerHTML = `"Now we are talking >>  ${points} rounds. You are getting in the flow!"`;
   } else if (10 <= points < 15) {
-    endGameMessage.innerHTML = `Half the way done! >>  ${points} rounds. Just put some more focus and it's yours!`;
+    endGameMessage.innerHTML = `"Half the way done! >>  ${points} rounds. Just put some more focus and it's yours!"`;
   } else if (15 <= points < 19) {
-    endGameMessage.innerHTML = `Uuuuh ${points} rounds! You are closer than ever. Let's go for the last round!`;
+    endGameMessage.innerHTML = `"Uuuuh ${points} rounds! You are closer than ever. Let's go for the last round!"`;
   } else {
-    endGameMessage.innerHTML = `Wow ${points} rounds! Simon says you are the winner!`;
+    endGameMessage.innerHTML = `"Wow ${points} rounds! Simon says you are the winner!"`;
   }
 }
 
@@ -143,28 +149,29 @@ closePopupBtn.addEventListener("click", () => {
   console.log("hola");
 });
 
-function closePopup() {
-  // if (openPopup == null) return;
-  openPopup.classList.remove("active");
-  overlay.classList.remove("active");
-  hideScores.classList.remove("hidden");
-  resetGame();
-}
+overlayPopup.addEventListener("click", () => {
+  closePopup();
+  console.log("hola");
+});
 
 restartGameWithBtn.addEventListener("click", () => {
   closePopupStartGame();
   console.log("hola");
 });
 
+function closePopup() {
+  openPopup.classList.remove("active");
+  overlayPopup.classList.remove("active");
+  hideScores.classList.remove("hidden");
+  resetGame();
+}
 
 function closePopupStartGame() {
-  // if (openPopup == null) return;
   openPopup.classList.remove("active");
-  overlay.classList.remove("active");
+  overlayPopup.classList.remove("active");
   hideScores.classList.remove("hidden");
   resetGame();
   setTimeout(() => {
     startGame();
   }, 500);
-
 }
