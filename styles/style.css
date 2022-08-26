@@ -53,10 +53,10 @@ p {
   margin: 0;
 }
 #game-board {
-  margin: 40px 0;
+  margin: 0;
   display: block;
   position: relative;
-  perspective: 1000px; 
+  perspective: 1000px;
   perspective-origin: 50% 50px;
 }
 
@@ -76,7 +76,6 @@ p {
   right: 0;
   display: table-cell;
   vertical-align: middle;
-  /* margin: -80px 0px 0px -200px; */
   margin-left: auto;
   margin-right: auto;
   transform: rotateX(50deg);
@@ -277,13 +276,13 @@ button:hover {
   }
 }
 
-@media (max-width: 357px) {
+@media (max-width: 358px) {
   #inner-circle {
     height: 90px;
     width: 90px;
     top: 23.5%;
     right: 0%;
-    left: 5%;
+    left: 1%;
   }
 }
 
@@ -294,7 +293,6 @@ button:hover {
   }
 
   #outer-circle {
-    padding: 0 30px;
     width: 100%;
   }
 
@@ -331,7 +329,7 @@ button:hover {
   }
 }
 
-@media (min-width: 614px) and (max-width: 1200px) {
+@media (min-width: 614px) and (max-width: 900px) {
   h1 {
     text-align: center;
     font-size: 2.5rem;
