@@ -4,42 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href='https://fonts.googleapis.com/css?family=Original+Surfer&effect=emboss' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/style.css" />
     <title>Simon</title>
+    <audio id="audio-green-btn">
+  	  <source src="/audio/simonSound1.mp3"></source>
+    </audio>
+    <audio id="audio-red-btn">
+  	  <source src="/audio/simonSound2.mp3"></source>
+    </audio>
+    <audio id="audio-yellow-btn">
+  	  <source src="/audio/simonSound3.mp3"></source>
+    </audio>
+    <audio id="audio-blue-btn">
+  	  <source src="/audio/simonSound4.mp3"></source>
+    </audio>
   </head>
   <body>
-
     <main>
-        <h1>Simon is in your hands!</h1>
-        <div id="game-message">
-            <p id="to-do"></p>
+      <h1>Simon is in your hands!</h1>
+      <div id="game-message">
+        <p id="to-do">&nbsp;</p>
+      </div>
+      <div id="game-board">
+        <div id="outer-circle">
+          <div>
+            <div id="green-btn" class="btn-board"></div>
+            <div id="red-btn" class="btn-board"></div>
+          </div>
+          <div>
+            <div id="blue-btn" class="btn-board"></div>
+            <div id="yellow-btn" class="btn-board"></div>
+          </div>
         </div>
-        <div id="game-board">
-            <div>
-              <div id="green-btn" class="btn-board"></div>
-              <div id="red-btn" class="btn-board"></div>
-            </div>
-            <div>
-              <div id="blue-btn" class="btn-board"></div>
-              <div id="yellow-btn" class="btn-board"></div>
-            </div>
+        <div id="inner-circle">
+          <div id="title">SIMON!</div>
         </div>
-        <div id="start-game">
-            <button type="button" class="btn-start">Let`s go!</button>
-        </div>
-        <div id="scores">
-            <h3 id ="count-points"></h3>
-        </div>
+      <div id="start-game">
+        <button type="button" class="btn-start" id="start-game-btn">Let`s go!</button>
+      </div>
+      <div id="scores">
+        <h3 class="count-points"></h3>
+      </div>
     </main>
     <div class="popup">
       <div id="btn-right">
-        <button id="close-button">&times;</button>
+        <button class="close-button-popup">&times;</button>
       </div>
       <h2>Simon says</h2>
-      <p id="points-counted"></p>
+      <p class="end-game-message"></p>
       <p>Wanna try again?</p>
-      <button type="button" class="btn-start" id="popup-btn">Let`s go!</button>
+      <button type="button" class="btn-start" id="popup-start-btn">Start game</button>
     </div>
     <div id="overlay"></div>
     <script type="text/javascript" src="js/index.js"></script>
